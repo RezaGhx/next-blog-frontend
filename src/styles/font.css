@@ -1,0 +1,13 @@
+@font-face {
+    font-family: dinartwo;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../../public/fonts/dinartwo/ttf/Mj_Dinar\ Two\ Light_0.ttf') format('truetype'),
+  }
+
+  @font-face {
+    font-family: dinartwo;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../public/fonts/dinartwo/ttf/Mj_Dinar\ Two\ Medium_0.ttf') format('truetype'),
+  }
