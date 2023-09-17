@@ -4,6 +4,7 @@ import {
   AdjustmentsHorizontalIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Home() {
@@ -74,15 +75,26 @@ export default function Home() {
             </div>
           </div>
           <div className={'md:col-span-9 grid grid-cols-6 gap-8'}>
-            {[1, 2, 3, 4, 5, 6].map((index) => {
+            {[
+              'nextjs.png',
+              'react.png',
+              'vuejs.png',
+              'react-native.png',
+              'nextjs.png',
+              'react.png',
+            ].map((item, index) => {
               return (
                 <div
                   key={index}
                   className={
-                    'col-span-6 md:col-span-3 lg:col-span-2 bg-white rounded-3xl p-2'
+                    'col-span-6 md:col-span-3 lg:col-span-2 bg-red-100 rounded-3xl p-2'
                   }
                 >
-                  <div className={'bg-gray-50 rounded-2xl'}>blog content</div>
+                  <div className={'aspect-w-16 aspect-h-9'}>
+                    {/* <Image src={`/images/${item}`} alt={'course image'} className={'rounded-2xl'} width={1000} height={1000}/> */}
+                    <img src={`/images/${item}`} alt={'course image'} className={'rounded-2xl w-full h-full object-center object-cover'}/>
+                  </div>
+                  {/* <div className={'bg-gray-50 rounded-2xl'}>blog content</div> */}
                 </div>
               );
             })}
