@@ -73,7 +73,20 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className={'bg-blue-200 '}>initialization!</div>
+          <div className={'md:col-span-9 grid grid-cols-6 gap-8'}>
+            {[1, 2, 3, 4, 5, 6].map((index) => {
+              return (
+                <div
+                  key={index}
+                  className={
+                    'col-span-6 md:col-span-3 lg:col-span-2 bg-white rounded-3xl p-2'
+                  }
+                >
+                  <div className={'bg-gray-50 rounded-2xl'}>blog content</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
