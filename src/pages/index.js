@@ -87,14 +87,41 @@ export default function Home() {
                 <div
                   key={index}
                   className={
-                    'col-span-6 md:col-span-3 lg:col-span-2 bg-red-100 rounded-3xl p-2'
+                    'col-span-6 md:col-span-3 lg:col-span-2 bg-white rounded-3xl p-2'
                   }
                 >
                   <div className={'aspect-w-16 aspect-h-9'}>
                     {/* <Image src={`/images/${item}`} alt={'course image'} className={'rounded-2xl'} width={1000} height={1000}/> */}
-                    <img src={`/images/${item}`} alt={'course image'} className={'rounded-2xl w-full h-full object-center object-cover'}/>
+                    <img
+                      src={`/images/${item}`}
+                      alt={'course image'}
+                      className={
+                        'rounded-2xl w-full h-full object-center object-cover'
+                      }
+                    />
                   </div>
-                  {/* <div className={'bg-gray-50 rounded-2xl'}>blog content</div> */}
+                  <div className={'bg-gray-50 rounded-2xl p-2'}>
+                    <h2 className={'mb-4'}>بررسی کامل ریکت و ریکت نیتیو</h2>
+                  </div>
+                  <div className={'flex items-center justify-between'}>
+                    <div className={'flex items-center'}>
+                      <img
+                        src={'/images/nextjs.png'}
+                        alt={'course image'}
+                        className={
+                          'rounded-full w-6 h-6 ring-2 ring-slate-500 ml-2'
+                        }
+                      />
+                      <span className={'text-sm text-slate-500'}>رضا غفوری</span>
+                    </div>
+                    <span
+                      className={
+                        'text-xs px-2 py-1 rounded-xl bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-blue-100 transition-all duration-300 cursor-pointer'
+                      }
+                    >
+                      جاوااسکریپت
+                    </span>
+                  </div>
                 </div>
               );
             })}
