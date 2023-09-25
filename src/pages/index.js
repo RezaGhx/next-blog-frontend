@@ -7,8 +7,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import Posts from 'components/posts';
+import axios from 'axios';
 
-export default function Home() {
+export default function Home({blogs}) {
   const [open, setOpen] = useState(false);
   return (
     <div className={'bg-slate-600'}>
@@ -76,10 +77,20 @@ export default function Home() {
             </div>
           </div>
           <div className={'md:col-span-9 grid grid-cols-6 gap-8'}>
-            <Posts />
+            <Posts data={blogs}/>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { data: result } = await axios.get('http://localhost:5000/api/posts?page=1&limit=10');
+  const { data } = result;
+  return {
+    props: {
+      blogs: data,
+    },
+  };
 }
