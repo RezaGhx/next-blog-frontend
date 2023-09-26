@@ -9,7 +9,7 @@ import { useState } from 'react';
 import Posts from 'components/posts';
 import axios from 'axios';
 
-export default function Home({blogs}) {
+export default function Home({ blogs, postCategories }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={'bg-slate-600'}>
@@ -40,20 +40,22 @@ export default function Home({blogs}) {
                 }`}
               >
                 <Link
-                  href="#"
+                  href={'/blogs'}
                   className={'block pr-4 py-2 hover:bg-purple-50 mb-1'}
                 >
                   همه مقالات
                 </Link>
-                <Link
-                  href="#"
-                  className={'block pr-4 py-2 hover:bg-purple-50 mb-1'}
-                >
-                  ریکت
-                </Link>
-                <Link href="#" className={'block pr-4 py-2 hover:bg-purple-50'}>
-                  جاوااسکریپت
-                </Link>
+                {postCategories?.map((category) => {
+                  return (
+                    <Link
+                      href={`/blogs/${category?.englishTitle}`}
+                      key={category?._id}
+                      className={`block pr-4 py-2 hover:bg-purple-50 mb-1`}
+                    >
+                      {category?.title} - {category?.color}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -77,7 +79,7 @@ export default function Home({blogs}) {
             </div>
           </div>
           <div className={'md:col-span-9 grid grid-cols-6 gap-8'}>
-            <Posts data={blogs}/>
+            <Posts data={blogs} />
           </div>
         </div>
       </div>
@@ -86,11 +88,17 @@ export default function Home({blogs}) {
 }
 
 export async function getServerSideProps(context) {
-  const { data: result } = await axios.get('http://localhost:5000/api/posts?page=1&limit=10');
+  const { data: result } = await axios.get(
+    'http://localhost:5000/api/posts?page=1&limit=10'
+  );
+  const { data: postCategories } = await axios.get(
+    'http://localhost:5000/api/post-category'
+  );
   const { data } = result;
   return {
     props: {
       blogs: data,
+      postCategories: postCategories?.data,
     },
   };
 }
