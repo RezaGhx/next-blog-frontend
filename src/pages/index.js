@@ -13,12 +13,13 @@ export default function Home({ blogs, postCategories }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={'bg-slate-600'}>
-      <div className={'container mx-auto lg:max-w-screen-xl'}>
+      <div className={'container mx-auto lg:max-w-screen-xl px-4 md:px-0'}>
         <div
           className={
             'grid gap-4 md:grid-cols-12 md:grid-rows-[60px_minmax(30px,_1fr)] bg-gray-100 min-h-screen'
           }
         >
+          {/* desktop category */}
           <div className={'hidden md:block md:row-span-2 md:col-span-3'}>
             <div className={'bg-white rounded-3xl overflow-hidden'}>
               <div
@@ -59,6 +60,21 @@ export default function Home({ blogs, postCategories }) {
               </div>
             </div>
           </div>
+          {/* mobile category */}
+          <div className={'flex md:hidden gap-x-4 overflow-auto pb-5'}>
+            {postCategories?.map((category) => {
+              return (
+                <Link
+                  href={`/blogs/${category?.englishTitle}`}
+                  key={category?._id}
+                  className={`block border-gray-200 text-gray-400 bg-white rounded-3xl px-3 py-1 whitespace-nowrap text-sm`}
+                >
+                  {category?.title}
+                </Link>
+              );
+            })}
+          </div>
+          {/* desktop sortbar */}
           <div className={'hidden md:block md:col-span-9'}>
             <div className={'bg-white rounded-3xl px-4 flex items-center'}>
               <div className={'flex gap-x-2 items-center ml-4'}>
@@ -78,6 +94,7 @@ export default function Home({ blogs, postCategories }) {
               </ul>
             </div>
           </div>
+          {/* blogs section */}
           <div className={'md:col-span-9 grid grid-cols-6 gap-8'}>
             <Posts data={blogs} />
           </div>
