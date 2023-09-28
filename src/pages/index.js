@@ -1,12 +1,11 @@
-import styles from 'styles/Home.module.css';
 import {
   ChevronDownIcon,
   AdjustmentsHorizontalIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import Posts from 'components/posts';
+import Mobile from "components/category/mobile";
 import axios from 'axios';
 
 export default function Home({ blogs, postCategories }) {
@@ -61,19 +60,7 @@ export default function Home({ blogs, postCategories }) {
             </div>
           </div>
           {/* mobile category */}
-          <div className={'flex md:hidden gap-x-4 overflow-auto pb-5'}>
-            {postCategories?.map((category) => {
-              return (
-                <Link
-                  href={`/blogs/${category?.englishTitle}`}
-                  key={category?._id}
-                  className={`block border-gray-200 text-gray-400 bg-white rounded-3xl px-3 py-1 whitespace-nowrap text-sm`}
-                >
-                  {category?.title}
-                </Link>
-              );
-            })}
-          </div>
+            <Mobile data={postCategories} />
           {/* desktop sortbar */}
           <div className={'hidden md:block md:col-span-9'}>
             <div className={'bg-white rounded-3xl px-4 flex items-center'}>
