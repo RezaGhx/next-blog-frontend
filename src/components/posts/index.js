@@ -20,17 +20,21 @@ const Posts = ({data}) => {
                     >
                         <div className={'aspect-w-16 aspect-h-9'}>
                             {/* <Image src={`/images/${item}`} alt={'course image'} className={'rounded-2xl'} width={1000} height={1000}/> */}
-                            <img
-                                src={`/images/${item?.coverImage}`}
-                                alt={item?.slug}
-                                className={
-                                    'rounded-2xl w-full h-full object-center object-cover'
-                                }
-                            />
+                            <Link href={`posts/${item?.hashId}/${item?.slug}`}>
+                                <img
+                                    src={`/images/${item?.coverImage}`}
+                                    alt={item?.slug}
+                                    className={
+                                        'rounded-2xl w-full h-full object-center object-cover'
+                                    }
+                                />
+                            </Link>
                         </div>
-                        <div className={'bg-gray-50 rounded-2xl p-2'}>
-                            <h2 className={'mb-4'}>{item?.title}</h2>
-                        </div>
+                        <Link href={`posts/${item?.hashId}/${item?.slug}`}>
+                            <div className={'bg-gray-50 rounded-2xl p-2'}>
+                                <h2 className={'mb-4'}>{item?.title}</h2>
+                            </div>
+                        </Link>
                         <div className={'flex items-center justify-between mb-7'}>
                             <div className={'flex items-center'}>
                                 <img
